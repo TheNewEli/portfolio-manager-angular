@@ -119,6 +119,10 @@
           }
         }
       }
-    }},
-  "defaultProject": "portfolio-manager-angular"
+    }
+  },
+  "defaultProject": "portfolio-manager-angular",
+  "cli": {
+    "analytics": "f7fa01ab-d6ea-49ec-86ff-b2f70296accb"
+  }
 }
