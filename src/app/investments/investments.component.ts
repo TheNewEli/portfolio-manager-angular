@@ -7,7 +7,7 @@ import { HttpClient } from '@angular/common/http';
   styleUrls: ['./investments.component.css']
 })
 export class InvestmentsComponent implements OnInit {
-  investments = [];
+  investments = new Array();
 
   constructor(private httpClient: HttpClient) {}
 
