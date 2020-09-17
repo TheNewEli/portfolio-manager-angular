@@ -1,5 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Inject } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 
 @Component({
   selector: 'app-investments',
@@ -14,7 +15,7 @@ export class InvestmentsComponent implements OnInit {
   totalInvestment: number;
   today: number = Date.now();
 
-  constructor(private httpClient: HttpClient) {}
+  constructor(private httpClient: HttpClient, public dialog: MatDialog) {}
 
   // tslint:disable-next-line:typedef
   ngOnInit() {
@@ -40,7 +41,7 @@ export class InvestmentsComponent implements OnInit {
   }
 
   getInvestment(): void {
-    const url = 'http://localhost:8080/investmentinfo/test';
+    const url = 'http://localhost:8080/investmentinfo';
     // 使用get方法请求url，请求一旦成功后，将调用传入的第一个方法；如果请求失败，将调用传入的第二个方法
     this.httpClient.get(url)
       .subscribe((response: any) => {
@@ -55,20 +56,30 @@ export class InvestmentsComponent implements OnInit {
       });
   }
 
-
   showDetails(investment): void {
-    alert('Datetime: ' + investment.datetime + '\n' +
-      'Symbol: ' + investment.symbol + '\n' +
-      'Name: ' + investment.name + '\n' +
-      'Pre Close: ' + investment.pre_close + '\n' +
-      'Open: ' + investment.open + '\n' +
-      'Volume: ' + investment.volume + '\n' +
-      'Change: ' + investment.change + '\n' +
-      'Percent Change: ' + investment.percent_change + '\n' +
-      'High: ' + investment.high + '\n' +
-      'Low: ' + investment.low + '\n' +
-      'Purchase Price: ' + investment.purchasePrice.toFixed(2) + '\n' +
-      'Shares: ' + investment.shares + '\n' +
-      'Current Value: ' + investment.currentValue + '\n');
+    const dialogRef = this.dialog.open(DetailsDialog, {
+      width: '500px',
+      data: investment
+    });
   }
+
+
+}
+
+@Component({
+  // tslint:disable-next-line:component-selector
+  selector: 'details-dialog',
+  templateUrl: './details-dialog.html',
+})
+// tslint:disable-next-line:component-class-suffix
+export class DetailsDialog {
+
+  constructor(
+    public dialogRef: MatDialogRef<DetailsDialog>,
+    @Inject(MAT_DIALOG_DATA) public investment) {}
+
+  onOKClick(): void {
+    this.dialogRef.close();
+  }
+
 }

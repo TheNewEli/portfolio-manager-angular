@@ -1,0 +1,22 @@
+<html>
+<head></head>
+<body>
+<p mat-dialog-title="">Investment Details <small class="ml-2">Last update at {{investment.datetime}}</small></p>
+<div mat-dialog-content="" class="mb-2">
+  <span class="detail-label">Symbol</span>        : {{investment.symbol}} <br>
+  <span class="detail-label">Name</span>          : {{investment.name}} <br>
+  <span class="detail-label">Pre Close</span>   : {{investment.pre_close}} <br>
+  <span class="detail-label">Open </span>   : {{investment.open}} <br>
+  <span class="detail-label">Change  </span>      : {{investment.change}} <br>
+  <span class="detail-label">Percent Change</span>: {{investment.percent_change}}% <br>
+  <span class="detail-label">High   </span>       : {{investment.high}} <br>
+  <span class="detail-label">Low  </span>         : {{investment.low}} <br>
+  <span class="detail-label">Purchase Price</span>: {{investment.purchasePrice | number:'.2-5'}} <br>
+  <span class="detail-label">Shares        </span>: {{investment.shares}} <br>
+  <span class="detail-label">Current Value</span> : {{investment.currentValue | number:'.2-5'}} <br>
+</div>
+<div mat-dialog-actions="" style="text-align: center; margin: auto">
+  <button class="btn btn-primary" style="width: 100px; margin: 0 auto" (click)="onOKClick()">OK</button>
+</div>
+</body>
+</html>
