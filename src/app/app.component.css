@@ -1,5 +1,8 @@
+.content-body{
+  top: 3.5em!important;
+}
 .logo {
-  width: 4em;
+  height: 3.5em;
   margin-left: .5em;
 }
 
