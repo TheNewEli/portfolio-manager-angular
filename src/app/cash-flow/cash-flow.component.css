@@ -1,3 +1,7 @@
+.spending-chart,.income-chart {
+  display: inline-block;
+  width: 50%;
+}
 mat-card {
   margin-top: 1em;
   margin-left: 1em;
@@ -18,3 +22,4 @@ mat-card {
 .example-margin {
   margin: 0 10px;
 }
+

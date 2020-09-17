@@ -13,6 +13,7 @@ import {NgxEchartsModule} from 'ngx-echarts';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {MatCardModule} from '@angular/material/card';
 import {MatRadioModule} from '@angular/material/radio';
+import {CashFlowComponent} from './cash-flow/cash-flow.component';
 
 @NgModule({
   imports: [BrowserModule, FormsModule, HttpClientModule, CommonModule,
@@ -20,7 +21,7 @@ import {MatRadioModule} from '@angular/material/radio';
       echarts: () => import('echarts')
     }),
     BrowserAnimationsModule, MatCardModule, MatRadioModule],
-  declarations: [AppComponent, InvestmentsComponent, TimecalPipe, NetWorthComponent],
+  declarations: [AppComponent, InvestmentsComponent, TimecalPipe, NetWorthComponent, CashFlowComponent],
   bootstrap: [AppComponent]
 })
 export class AppModule {
