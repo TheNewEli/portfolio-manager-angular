@@ -16,6 +16,10 @@ export class NetWorthComponent implements OnInit {
   investmentList = [];
 
   options = {
+    title: {
+      text: 'Net Worth Line Chart',
+      left: 'center'
+    },
     tooltip: {
       trigger: 'axis',
       axisPointer: {
@@ -26,7 +30,9 @@ export class NetWorthComponent implements OnInit {
       }
     },
     legend: {
-      data: ['Cash', 'Investment']
+      data: ['Cash', 'Investment'],
+      top: 20,
+      right: '5%'
     },
     grid: {
       left: '3%',
@@ -39,7 +45,6 @@ export class NetWorthComponent implements OnInit {
         type: 'category',
         boundaryGap: false,
         data: [], axisLabel: {
-          interval: 0,
           rotate: 38
         }
       },
@@ -55,17 +60,20 @@ export class NetWorthComponent implements OnInit {
         type: 'line',
         stack: 'counts',
         areaStyle: {normal: {}},
-        data: []
+        data: [],
+        smooth: true
       },
       {
         name: 'Investment',
         type: 'line',
         stack: 'counts',
         areaStyle: {normal: {}},
-        data: []
+        data: [],
+        smooth: true
       }
     ]
   };
+  netWorth = 0;
 
   constructor(private httpClient: HttpClient) {
   }
@@ -90,6 +98,9 @@ export class NetWorthComponent implements OnInit {
 
     this.echartsInstance.clear();
     this.echartsInstance.setOption(this.options, true);
+
+    this.netWorth = Number(this.investmentList[this.investmentList.length - 1]) +
+      Number(this.cashHistoryList[this.cashHistoryList.length - 1]);
   }
 
   getCash(period): void {
