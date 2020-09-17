@@ -68,7 +68,7 @@ export class NetWorthComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.setChartForPeriod(50);
+    this.setChartForPeriod(34);
   }
 
   onChartInit(echarts: any): void {
