@@ -42,6 +42,7 @@ export class NetWorthComponent implements OnInit {
     },
     xAxis: [
       {
+        name: 'Date',
         type: 'category',
         boundaryGap: false,
         data: [], axisLabel: {
@@ -51,7 +52,11 @@ export class NetWorthComponent implements OnInit {
     ],
     yAxis: [
       {
-        type: 'value'
+        name: 'Net Worth/USD',
+        type: 'value',
+        axisLabel: {
+          formatter: '${value}'
+        }
       }
     ],
     series: [

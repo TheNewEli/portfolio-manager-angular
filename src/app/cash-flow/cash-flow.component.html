@@ -1,5 +1,6 @@
 <mat-card>
-  <mat-card-title>Cash Flow</mat-card-title>
+  <mat-card-title>Cash Flow<label class="cash-flow-label">{{totalSpending + totalIncome|currency}}</label>
+  </mat-card-title>
   <mat-card-content>
     <section>
       <label class="example-margin">Data for the last:</label>
@@ -11,9 +12,15 @@
         <mat-radio-button class="example-margin" (change)="setChartForPeriod(365)" value="year">Year</mat-radio-button>
       </mat-radio-group>
     </section>
-    <section>
-      <div echarts [options]="incomePieOptions" (chartInit)="incomeChartInit($event)" [loading]="isLoading"class="demo-chart" class="income-chart"></div>
-      <div echarts [options]="spendingPieOptions" (chartInit)="spendingChartInit($event)" [loading]="isLoading"class="demo-chart" class="income-chart"></div>
+    <section class="center">
+      <mat-card class="cash-flow-chart">
+        <div echarts [options]="incomePieOptions" (chartInit)="incomeChartInit($event)" [loading]="isLoading"></div>
+        <mat-card-title><label class="cash-flow-chart-label">{{totalIncome|currency}}</label></mat-card-title>
+      </mat-card>
+      <mat-card class="cash-flow-chart">
+        <div echarts [options]="spendingPieOptions" (chartInit)="spendingChartInit($event)" [loading]="isLoading"></div>
+        <mat-card-title><label class="cash-flow-chart-label">{{totalSpending|currency}}</label></mat-card-title>
+      </mat-card>
     </section>
   </mat-card-content>
 </mat-card>

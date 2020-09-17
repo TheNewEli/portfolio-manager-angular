@@ -79,13 +79,15 @@ export class CashFlowComponent implements OnInit {
   private incomeChartRef: any;
   private spendingChartRef: any;
   isLoading = false;
+  totalIncome = 0;
+  totalSpending = 0;
 
   constructor(private httpClient: HttpClient) {
   }
 
   ngOnInit(): void {
     this.period = 'month';
-    this.setDataForCharts(10);
+    this.setDataForCharts(34);
   }
 
   setChartForPeriod(period: number): void {
@@ -105,7 +107,6 @@ export class CashFlowComponent implements OnInit {
         this.symbolList = response[0];
         this.incomeList = response[1];
         this.spendingList = response[2];
-        console.log('res' + response);
         this.resetCharts();
       }, (response) => {
         console.log(response);
@@ -115,9 +116,11 @@ export class CashFlowComponent implements OnInit {
   }
 
   resetCharts(): void {
-    console.log('symbollist:' + this.symbolList);
     this.incomePieOptions.series[0].data = this.buildSeriesData(this.symbolList, this.incomeList);
     this.spendingPieOptions.series[0].data = this.buildSeriesData(this.symbolList, this.spendingList);
+
+    this.totalIncome = this.sumArray(this.incomeList);
+    this.totalSpending = this.sumArray(this.spendingList);
 
     this.incomeChartRef.clear();
     this.incomeChartRef.setOption(this.incomePieOptions, true);
@@ -140,5 +143,11 @@ export class CashFlowComponent implements OnInit {
 
   spendingChartInit(ec: any): void {
     this.spendingChartRef = ec;
+  }
+
+  private sumArray(numList: string[]): number {
+    let num = 0;
+    numList.forEach(value => num += Number(value));
+    return num;
   }
 }
