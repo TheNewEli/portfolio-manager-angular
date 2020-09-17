@@ -45,7 +45,7 @@ export class InvestmentsComponent implements OnInit {
   }
 
   getInvestment(): void {
-    const url = 'http://localhost:8080/investmentinfo/test';
+    const url = 'http://localhost:8080/investmentinfo';
     // 使用get方法请求url，请求一旦成功后，将调用传入的第一个方法；如果请求失败，将调用传入的第二个方法
     this.httpClient.get(url)
       .subscribe((response: any) => {
