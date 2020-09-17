@@ -68,6 +68,7 @@ export class NetWorthComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.period = 'month';
     this.setChartForPeriod(34);
   }
 

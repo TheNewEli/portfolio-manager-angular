@@ -4,10 +4,11 @@
     <section>
       <label class="example-margin">Data for the last:</label>
       <mat-radio-group [(ngModel)]="period">
-        <mat-radio-button class="example-margin" (change)="setChartForPeriod(11)">Week</mat-radio-button>
-        <mat-radio-button class="example-margin" (change)="setChartForPeriod(34)">Month</mat-radio-button>
-        <mat-radio-button class="example-margin" (change)="setChartForPeriod(90)">Quarter</mat-radio-button>
-        <mat-radio-button class="example-margin" (change)="setChartForPeriod(365)">Year</mat-radio-button>
+        <mat-radio-button class="example-margin" (change)="setChartForPeriod(11)" value="week">Week</mat-radio-button>
+        <mat-radio-button class="example-margin" (change)="setChartForPeriod(34)" value="month">Month</mat-radio-button>
+        <mat-radio-button class="example-margin" (change)="setChartForPeriod(90)" value="quarter">Quarter
+        </mat-radio-button>
+        <mat-radio-button class="example-margin" (change)="setChartForPeriod(365)" value="year">Year</mat-radio-button>
       </mat-radio-group>
     </section>
     <section>
