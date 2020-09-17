@@ -1,5 +1,5 @@
 <mat-card>
-  <mat-card-title>Net Worth</mat-card-title>
+  <mat-card-title>Cash Flow</mat-card-title>
   <mat-card-content>
     <section>
       <label class="example-margin">Data for the last:</label>
@@ -12,10 +12,8 @@
       </mat-radio-group>
     </section>
     <section>
-      <div echarts [options]="options" [loading]="isLoading" (chartInit)="onChartInit($event)" theme="macarons"
-           class="demo-chart"></div>
+      <div echarts [options]="incomePieOptions" (chartInit)="incomeChartInit($event)" [loading]="isLoading"class="demo-chart" class="income-chart"></div>
+      <div echarts [options]="spendingPieOptions" (chartInit)="spendingChartInit($event)" [loading]="isLoading"class="demo-chart" class="income-chart"></div>
     </section>
   </mat-card-content>
 </mat-card>
-
-

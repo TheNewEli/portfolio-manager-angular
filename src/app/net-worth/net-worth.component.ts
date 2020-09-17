@@ -38,8 +38,11 @@ export class NetWorthComponent implements OnInit {
       {
         type: 'category',
         boundaryGap: false,
-        data: []
-      }
+        data: [], axisLabel: {
+          interval: 0,
+          rotate: 38
+        }
+      },
     ],
     yAxis: [
       {
