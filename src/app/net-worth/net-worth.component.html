@@ -1,0 +1,28 @@
+<mat-card>
+  <mat-card-title>Net Worth</mat-card-title>
+  <mat-card-content>
+    <section>
+      <label class="example-margin">Data for the last:</label>
+      <mat-radio-group [(ngModel)]="period">
+        <mat-radio-button class="example-margin" (change)="setChartForPeriod(11)">Week</mat-radio-button>
+        <mat-radio-button class="example-margin" (change)="setChartForPeriod(40)">Month</mat-radio-button>
+        <mat-radio-button class="example-margin" (change)="setChartForPeriod(110)">Quarter</mat-radio-button>
+        <mat-radio-button class="example-margin" (change)="setChartForPeriod(400)">Year</mat-radio-button>
+      </mat-radio-group>
+    </section>
+    <section>
+      <div echarts [options]="options" [loading]="isLoading" (chartInit)="onChartInit($event)" theme="macarons"
+           class="demo-chart"></div>
+    </section>
+  </mat-card-content>
+</mat-card>
+
+
+<div class="button-groups">
+  <div class="example-button-row">
+    <a mat-button href="https://www.google.com/" target="_blank">Link</a>
+  </div>
+  <button (click)="isLoading=!isLoading" nz-button nzType="default">Toggle Loading</button>
+</div>
+
+

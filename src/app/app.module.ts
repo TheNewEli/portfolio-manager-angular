@@ -1,16 +1,27 @@
-import { NgModule } from '@angular/core';
-import { BrowserModule } from '@angular/platform-browser';
-import { FormsModule } from '@angular/forms';
-import { HttpClientModule } from '@angular/common/http';
-import { CommonModule } from '@angular/common';
+import {NgModule} from '@angular/core';
+import {BrowserModule} from '@angular/platform-browser';
+import {FormsModule} from '@angular/forms';
+import {HttpClientModule} from '@angular/common/http';
+import {CommonModule} from '@angular/common';
 
-import { AppComponent } from './app.component';
-import { InvestmentsComponent } from './investments/investments.component';
+import {AppComponent} from './app.component';
+import {InvestmentsComponent} from './investments/investments.component';
 import {TimecalPipe} from './investments/timecal.pipe';
+import {NetWorthComponent} from './net-worth/net-worth.component';
+
+import {NgxEchartsModule} from 'ngx-echarts';
+import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
+import {MatCardModule} from '@angular/material/card';
+import {MatRadioModule} from '@angular/material/radio';
 
 @NgModule({
-  imports:      [ BrowserModule, FormsModule, HttpClientModule, CommonModule ],
-  declarations: [ AppComponent, InvestmentsComponent, TimecalPipe ],
-  bootstrap:    [ AppComponent ]
+  imports: [BrowserModule, FormsModule, HttpClientModule, CommonModule,
+    NgxEchartsModule.forRoot({
+      echarts: () => import('echarts')
+    }),
+    BrowserAnimationsModule, MatCardModule, MatRadioModule],
+  declarations: [AppComponent, InvestmentsComponent, TimecalPipe, NetWorthComponent],
+  bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule {
+}
