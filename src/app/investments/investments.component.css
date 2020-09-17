@@ -33,28 +33,39 @@
 }
 
 .submenu .nav-item {
-  padding: 0px 10px;
+  padding: 0px 20px;
   background-color: #fff;
   color: black;
   border-bottom: 1px solid silver;
-  font-family: SansSerif;
+  font-family: Charter;
 }
 
 .submenu .nav-item .first-line{
-  width: 268px;
-  padding: 0px;
-  line-height: 30px;
+  width: 260px;
+  padding: 10px 0px 0px 0px;
+  line-height: 20px;
 }
 .submenu .nav-item .second-line{
-  width: 268px;
-  padding: 0px;
+  width: 260px;
+  padding: 0px 0px 10px 0px;
   font-size: 12px;
   color: #686972;
-  line-height: 30px;
+  line-height: 20px;
+  font-family: Charter;
 }
 
 .submenu .nav-item .portfolio-name{
   font-size: 16px;
   color: #5969ff;
+  cursor: pointer;
+}
+
+.icon-circle-small {
+  line-height: 1;
+  padding: 4px 2px;
+  text-align: center;
+  font-size: 12px;
+  display: inline-block;
+  border-radius: 100%;
 }
 

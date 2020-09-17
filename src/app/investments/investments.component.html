@@ -47,12 +47,21 @@
           <ul class="nav flex-column" *ngFor="let investment of investments">
             <li class="nav-item  d-flex flex-column">
               <div class="d-inline-flex first-line">
-                <div class="flex-fill text-left portfolio-name">{{investment.name}}</div>
-                <div class="flex-fill text-right">{{investment.currentValue | number:'3.2-5'}}</div>
+                <a class="flex-fill text-left portfolio-name" (click)="showDetails(investment)">{{investment.name}}
+                  <span *ngIf="investment.percent_change > 0">
+                    <span class="icon-circle-small icon-box-xs text-success bg-success-light">{{investment.percent_change}}%
+                      <i class="fa fa-fw fa-arrow-up"></i></span></span>
+                  <span *ngIf="investment.percent_change < 0">
+                    <span class="icon-circle-small icon-box-xs text-danger bg-success-light">{{-investment.percent_change}}%
+                      <i class="fa fa-fw fa-arrow-down"></i></span></span>
+                </a>
+                <a class="flex-fill text-right">
+                  {{investment.currentValue | number:'3.2-5'}}
+                </a>
               </div>
               <div class="d-inline-flex second-line">
-                <div class="flex-fill text-left">{{investment.symbol}}</div>
-                <div class="flex-fill text-right">{{today.valueOf() - investment.timestamp | timeCal}}</div>
+                <a class="flex-fill text-left">{{investment.symbol}}</a>
+                <a class="flex-fill text-right">{{today.valueOf() - investment.timestamp | timeCal}}</a>
               </div>
             </li>
           </ul>
