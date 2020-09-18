@@ -65,29 +65,7 @@
                 <a class="flex-fill text-right">{{today.valueOf() - investment.timestamp | timeCal}}</a>
               </div>
             </li>
-            <div class="modal fade" id="myModal">
-              <div class="modal-dialog">
-                <div class="modal-content">
 
-                  <!-- 模态框头部 -->
-                  <div class="modal-header">
-                    <h4 class="modal-title"> Investment Details </h4>
-                    <button type="button" class="close" data-dismiss="modal">&times;</button>
-                  </div>
-
-                  <!-- 模态框主体 -->
-                  <div class="modal-body">
-                    {{investment.name}}
-                  </div>
-
-                  <!-- 模态框底部 -->
-                  <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">关闭</button>
-                  </div>
-
-                </div>
-              </div>
-            </div>
           </ul>
         </div>
       </li>
