@@ -1,6 +1,7 @@
-import { Component, OnInit, Inject } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
-import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
+import {Component, OnInit, Inject} from '@angular/core';
+import {HttpClient} from '@angular/common/http';
+import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material/dialog';
+import {NetWorthService} from '../net-worth.service';
 
 @Component({
   selector: 'app-investments',
@@ -15,13 +16,20 @@ export class InvestmentsComponent implements OnInit {
   totalInvestment: number;
   today: number = Date.now();
 
-  constructor(private httpClient: HttpClient, public dialog: MatDialog) {}
+  constructor(private httpClient: HttpClient, public dialog: MatDialog, private netWorthService: NetWorthService) {
+  }
 
   // tslint:disable-next-line:typedef
   ngOnInit() {
     // 后台数据的请求地址，如果变量定义后不再重新赋值，则应该使用const来定义
     this.getCash();
     this.getInvestment();
+    this.netWorthService.netWorthOb.subscribe(netWorth => {
+      this.netWorth = netWorth;
+    });
+    this.netWorthService.investmentOb.subscribe(investment => {
+      this.totalInvestment = investment;
+    });
   }
 
   getCash(): void {
@@ -32,7 +40,9 @@ export class InvestmentsComponent implements OnInit {
         console.log(response);
         this.cashAccounts = response;
         this.totalCash = 0;
-        this.cashAccounts.forEach(val => {this.totalCash += val.value; });
+        this.cashAccounts.forEach(val => {
+          this.totalCash += val.value;
+        });
         this.netWorth += this.totalCash;
       }, (response) => {
         console.log(response);
@@ -48,7 +58,9 @@ export class InvestmentsComponent implements OnInit {
         console.log(response);
         this.investments = response;
         this.totalInvestment = 0;
-        this.investments.forEach(val => {this.totalInvestment += val.currentValue; });
+        this.investments.forEach(val => {
+          this.totalInvestment += val.currentValue;
+        });
         this.netWorth += this.totalInvestment;
       }, (response) => {
         console.log(response);
@@ -76,7 +88,8 @@ export class DetailsDialog {
 
   constructor(
     public dialogRef: MatDialogRef<DetailsDialog>,
-    @Inject(MAT_DIALOG_DATA) public investment) {}
+    @Inject(MAT_DIALOG_DATA) public investment) {
+  }
 
   onOKClick(): void {
     this.dialogRef.close();

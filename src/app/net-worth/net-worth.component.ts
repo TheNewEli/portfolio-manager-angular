@@ -1,5 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {HttpClient} from '@angular/common/http';
+import {NetWorthService} from '../net-worth.service';
 
 @Component({
   selector: 'app-net-worth',
@@ -80,7 +81,7 @@ export class NetWorthComponent implements OnInit {
   };
   netWorth = 0;
 
-  constructor(private httpClient: HttpClient) {
+  constructor(private httpClient: HttpClient, private netWorthService: NetWorthService) {
   }
 
   ngOnInit(): void {
@@ -104,8 +105,12 @@ export class NetWorthComponent implements OnInit {
     this.echartsInstance.clear();
     this.echartsInstance.setOption(this.options, true);
 
-    this.netWorth = Number(this.investmentList[this.investmentList.length - 1]) +
-      Number(this.cashHistoryList[this.cashHistoryList.length - 1]);
+    const totalInvestment = Number(this.investmentList[this.investmentList.length - 1]);
+    const totalCash = Number(this.cashHistoryList[this.cashHistoryList.length - 1]);
+    this.netWorth = totalCash + totalInvestment;
+
+    this.netWorthService.emitNetWorth(this.netWorth);
+    this.netWorthService.emitInvestment(totalInvestment);
   }
 
   getCash(period): void {
